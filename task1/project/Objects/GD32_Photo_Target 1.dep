@@ -805,7 +805,7 @@ I (..\Library\Include\gd32f10x_wwdgt.h)(0x6683637E)
 I (..\User\main.h)(0x66836380)
 I (..\User\systick.h)(0x66836380)
 I (..\User\APP\inc\led_driver.h)(0x66836381)
-F (..\User\main.c)(0x6683BB37)(--gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Library\Include -I ..\User -I ..\User\APP\inc-IE:\SummerDigital\keil\ARM\PACK\GigaDevice\GD32F10x_DFP\2.3.0\Device\Include-D__UVISION_VERSION="536" -DGD32F10X_MD -DUSE_STDPERIPH_DRIVER -DGD32F10X_MD -D__FPU_PRESENT-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (..\User\main.c)(0x66849F75)(--gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Library\Include -I ..\User -I ..\User\APP\inc-IE:\SummerDigital\keil\ARM\PACK\GigaDevice\GD32F10x_DFP\2.3.0\Device\Include-D__UVISION_VERSION="536" -DGD32F10X_MD -DUSE_STDPERIPH_DRIVER -DGD32F10X_MD -D__FPU_PRESENT-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (..\CMSIS\gd32f10x.h)(0x6683637C)
 I (..\CMSIS\core_cm3.h)(0x6683637C)
 I (E:\SummerDigital\keil\ARM\ARMCC\include\stdint.h)(0x6025237E)

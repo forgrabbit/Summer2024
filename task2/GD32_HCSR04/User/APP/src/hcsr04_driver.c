@@ -61,10 +61,10 @@ void Ultrasonic_Init()
 	初始化 超声波模块引脚
 	--------------------------------------------------------------------*/
 	rcu_periph_clock_enable(RCU_GPIOB);										// 使能GPIOB时钟
-	gpio_init(GPIOB, GPIO_MODE_OUT_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_11);		// Trig - PB11输出
-	gpio_init(GPIOB, GPIO_MODE_IN_FLOATING, GPIO_OSPEED_50MHZ, GPIO_PIN_10); // Echo - PB10输入
+	gpio_init(GPIOB, GPIO_MODE_OUT_PP, GPIO_OSPEED_50MHZ, GPIO_PIN_9);		// Trig - PB11输出
+	gpio_init(GPIOB, GPIO_MODE_IN_FLOATING, GPIO_OSPEED_50MHZ, GPIO_PIN_8); // Echo - PB10输入
 	/*预先拉低Trig引脚*/
-	gpio_bit_write(GPIOB, GPIO_PIN_11, RESET);
+	gpio_bit_write(GPIOB, GPIO_PIN_9, RESET);
 
 	TIM2_Init(9, 77); // 用于计数
 }
@@ -74,15 +74,15 @@ uint32_t Get_Distance(void) // 传入时间单位10us
 {
 	uint32_t Distance = 0;
 	/*将Trig引脚拉高十秒*/
-	gpio_bit_write(GPIOB, GPIO_PIN_11, SET);
+	gpio_bit_write(GPIOB, GPIO_PIN_9, SET);
 	delay_us(10);
-	gpio_bit_write(GPIOB, GPIO_PIN_11, RESET);
+	gpio_bit_write(GPIOB, GPIO_PIN_9, RESET);
 	//如果Echo引脚是低电平则一直等待，直到为Echo引脚为高电平，为高电平就说明接受到了返回的信号
-	while (gpio_input_bit_get(GPIOB, GPIO_PIN_10) == 0);
+	while (gpio_input_bit_get(GPIOB, GPIO_PIN_8) == 0);
 	//记录下此时的时间值（10us定时器中累加的变量，所以时间单位为10us）
 	HalTime1 = TimeCounter;
 	//等待高电平时间结束
-	while (gpio_input_bit_get(GPIOB, GPIO_PIN_10) == 1);
+	while (gpio_input_bit_get(GPIOB, GPIO_PIN_8) == 1);
 
 	//计算时间 判断时间变量是不是从头开始累加了（变量超过范围时会从0开始累加）
 	if (TimeCounter > HalTime1)

@@ -1,6 +1,6 @@
 .\objects\enc_driver.o: ..\User\APP\src\enc_driver.c
 .\objects\enc_driver.o: ..\User\APP\inc\enc_driver.h
-.\objects\enc_driver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\enc_driver.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\enc_driver.o: ..\CMSIS\gd32f10x.h
 .\objects\enc_driver.o: ..\CMSIS\core_cm3.h
 .\objects\enc_driver.o: ..\CMSIS\core_cmInstr.h
@@ -15,7 +15,7 @@
 .\objects\enc_driver.o: ..\Library\Include\gd32f10x_dac.h
 .\objects\enc_driver.o: ..\Library\Include\gd32f10x_dma.h
 .\objects\enc_driver.o: ..\Library\Include\gd32f10x_enet.h
-.\objects\enc_driver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\enc_driver.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\enc_driver.o: ..\Library\Include\gd32f10x_exmc.h
 .\objects\enc_driver.o: ..\Library\Include\gd32f10x_exti.h
 .\objects\enc_driver.o: ..\Library\Include\gd32f10x_fmc.h

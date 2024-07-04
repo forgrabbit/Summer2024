@@ -1850,28 +1850,28 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       448         18          0          0          0       2293   enc_driver.o
-       350          6          0          0          0       3950   gd32f10x_gpio.o
-       296         60          0          4          0       6243   gd32f10x_it.o
-       216         28          0          0          0       1896   gd32f10x_misc.o
-       120         18          0          0          0       2106   gd32f10x_rcu.o
-      1308         72          0          0          0       9945   gd32f10x_timer.o
-       130          0          0          0          0       3093   gd32f10x_usart.o
-       332         34          0          8          0       2021   hcsr04_driver.o
-       116          8          0          0          0        503   key_driver.o
-        76          8          0          0          0        948   led_driver.o
-      1016         76          0          0          0       1399   main.o
-       758         28       2072          0          0       5150   oled_driver.o
-       184         10          0          0          0       1920   photoelectric.o
-       548         24          0          0          0       1878   pwm_driver.o
-        36          8        260          0       1024        812   startup_gd32f10x_md.o
-       416         30          0          4          0      54047   system_gd32f10x.o
-       248         34          0          4          0      25217   systick.o
-       112          6          0          0          0        553   tim_driver.o
-         0          0          0         24        160       1594   uart_driver.o
+       448         18          0          0          0       2197   enc_driver.o
+       350          6          0          0          0       3806   gd32f10x_gpio.o
+       296         60          0          4          0       5907   gd32f10x_it.o
+       216         28          0          0          0       1824   gd32f10x_misc.o
+       120         18          0          0          0       2010   gd32f10x_rcu.o
+      1308         72          0          0          0       9561   gd32f10x_timer.o
+       130          0          0          0          0       2973   gd32f10x_usart.o
+       332         34          0          8          0       1925   hcsr04_driver.o
+       116          8          0          0          0        479   key_driver.o
+        76          8          0          0          0        900   led_driver.o
+      1016         76          0          0          0       1375   main.o
+       758         28       2072          0          0       4934   oled_driver.o
+       184         10          0          0          0       1856   photoelectric.o
+       548         24          0          0          0       1806   pwm_driver.o
+        36          8        260          0       1024        788   startup_gd32f10x_md.o
+       416         30          0          4          0      53835   system_gd32f10x.o
+       248         34          0          4          0      25037   systick.o
+       112          6          0          0          0        529   tim_driver.o
+         0          0          0         24        160       1558   uart_driver.o
 
     ----------------------------------------------------------------------
-      6718        468       2366         44       1188     125568   Object Totals
+      6718        468       2366         44       1188     123300   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          8          0          2          0          4          0   (incl. Padding)
 
@@ -1920,8 +1920,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      8122        494       2366         44       1188     122388   Grand Totals
-      8122        494       2366         44       1188     122388   ELF Image Totals
+      8122        494       2366         44       1188     120120   Grand Totals
+      8122        494       2366         44       1188     120120   ELF Image Totals
       8122        494       2366         44          0          0   ROM Totals
 
 ==============================================================================
