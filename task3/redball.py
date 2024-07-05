@@ -10,7 +10,7 @@ threshold_index = 0 # 0 for red, 1 for green, 2 for blue
 
 # Color Tracking Thresholds (L Min, L Max, A Min, A Max, B Min, B Max)
 # The below thresholds track in general red/green/blue things. You may wish to tune them...
-thresholds = [(30, 100, 15, 127, 15, 127), # generic_red_thresholds
+thresholds = [(19, 66, 33, 125, -20, 33), # generic_red_thresholds
               (30, 100, -64, -8, -32, 32), # generic_green_thresholds
               (0, 30, 0, 64, -128, 0),# generic_blue_thresholds
               (31, 67, 33, 114, -14, 39),#redball
@@ -40,7 +40,7 @@ while True:
     red_right = False
     red_straight = False
     # 在图像中查找红色色块
-    for blob in img.find_blobs([thresholds[3]], pixels_threshold=200, area_threshold=200, merge=True):
+    for blob in img.find_blobs([thresholds[3]], pixels_threshold=30, area_threshold=30, merge=True):
         # 如果检测到红色色块
         if blob.code() == 1:
             # 获取色块的中心坐标
@@ -50,15 +50,15 @@ while True:
             print("cx:", cx)
             print("cy：",cy)
             # 根据色块的位置发送不同的数字给UART串口
-            if cx < img.width() // 3:  # 色块在左侧
+            if cx < img.width() // 4:  # 色块在左侧
                 uart.write("%d" % 3)  # 发送数字3
                 print("RD: 3")
                 red_left = True
-            elif cx > 2 * img.width() // 3:  # 色块在右侧
+            elif cx > 3 * img.width() // 4:  # 色块在右侧
                 uart.write("%d" % 2)  # 发送数字2
                 print("RD: 2")
                 red_right = True
-            elif cx>img.width() //3 and cx<2 * img.width()//3:    # 色块在中间位置
+            elif cx>img.width() //4 and cx<3 * img.width()//4:    # 色块在中间位置
                 uart.write("%d" % 1)
                 print("RD: 1")
                 red_straight = True    # 发送数字1
