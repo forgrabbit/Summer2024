@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\GD32_HCSR04.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\GD32_HCSR04.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Jul 05 11:32:31 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Jul 05 17:10:09 2024
 <BR><P>
-<H3>Maximum Stack Usage =        184 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        144 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; Test_UASRT2 &rArr; USART2_Init &rArr; usart_baudrate_set &rArr; rcu_clock_freq_get
+main &rArr; Push_Red_Ball &rArr; OLED_P8x16Str &rArr; OLED_Set_Pos &rArr; OLED_WrCmd
 <P>
 <H3>
 Mutually Recursive functions
@@ -235,8 +235,8 @@ Global Symbols
 </UL>
 <P><STRONG><a name="[98]"></a>__aeabi_uidiv</STRONG> (Thumb, 0 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
 
-<P><STRONG><a name="[7a]"></a>__aeabi_uidivmod</STRONG> (Thumb, 44 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<P><STRONG><a name="[79]"></a>__aeabi_uidivmod</STRONG> (Thumb, 44 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
 <P><STRONG><a name="[3c]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
@@ -266,7 +266,7 @@ Global Symbols
 <LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_reset
 <LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_channel_output_pulse_value_config
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Test_UASRT2
+<BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Push_Red_Ball
 </UL>
 
 <P><STRONG><a name="[42]"></a>Motor_Init</STRONG> (Thumb, 134 bytes, Stack size 8 bytes, pwm_driver.o(i.Motor_Init))
@@ -304,8 +304,7 @@ Global Symbols
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_1ms
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_CLS
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Test_UASRT2
-<LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[4c]"></a>OLED_P6x8Str</STRONG> (Thumb, 96 bytes, Stack size 32 bytes, oled_driver.o(i.OLED_P6x8Str))
@@ -323,7 +322,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_WrDat
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Set_Pos
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Test_UASRT2
+<BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Push_Red_Ball
+<LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[4b]"></a>OLED_Set_Pos</STRONG> (Thumb, 36 bytes, Stack size 16 bytes, oled_driver.o(i.OLED_Set_Pos))
@@ -363,83 +363,79 @@ Global Symbols
 <P><STRONG><a name="[8]"></a>PendSV_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, gd32f10x_it.o(i.PendSV_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32f10x_md.o(RESET)
 </UL>
+<P><STRONG><a name="[4f]"></a>Push_Red_Ball</STRONG> (Thumb, 386 bytes, Stack size 80 bytes, uart_driver.o(i.Push_Red_Ball))
+<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = Push_Red_Ball &rArr; OLED_P8x16Str &rArr; OLED_Set_Pos &rArr; OLED_WrCmd
+</UL>
+<BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_1ms
+<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_P8x16Str
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_toggle
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
+<LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorCtrl3W
+</UL>
+<BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
 <P><STRONG><a name="[6]"></a>SVC_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, gd32f10x_it.o(i.SVC_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32f10x_md.o(RESET)
 </UL>
 <P><STRONG><a name="[9]"></a>SysTick_Handler</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, gd32f10x_it.o(i.SysTick_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = SysTick_Handler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_decrement
+<BR>[Calls]<UL><LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_decrement
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32f10x_md.o(RESET)
 </UL>
 <P><STRONG><a name="[37]"></a>SystemInit</STRONG> (Thumb, 196 bytes, Stack size 8 bytes, system_gd32f10x.o(i.SystemInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = SystemInit &rArr; system_clock_config
 </UL>
-<BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_vector_table_set
-<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_clock_config
+<BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_vector_table_set
+<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_clock_config
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32f10x_md.o(.text)
 </UL>
-<P><STRONG><a name="[52]"></a>TIM2_Init</STRONG> (Thumb, 100 bytes, Stack size 32 bytes, hcsr04_driver.o(i.TIM2_Init))
+<P><STRONG><a name="[55]"></a>TIM2_Init</STRONG> (Thumb, 100 bytes, Stack size 32 bytes, hcsr04_driver.o(i.TIM2_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = TIM2_Init &rArr; nvic_irq_enable
 </UL>
 <BR>[Calls]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_clock_enable
-<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_priority_group_set
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_irq_enable
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_enable
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_deinit
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_struct_para_init
-<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_interrupt_flag_clear
-<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_interrupt_enable
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_init
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_priority_group_set
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_irq_enable
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_enable
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_deinit
+<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_struct_para_init
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_interrupt_flag_clear
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_interrupt_enable
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ultrasonic_Init
+<BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ultrasonic_Init
 </UL>
 
 <P><STRONG><a name="[23]"></a>TIMER0_UP_IRQHandler</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, gd32f10x_it.o(i.TIMER0_UP_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = TIMER0_UP_IRQHandler &rArr; led_toggle
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_flag_clear
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_toggle
+<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_flag_clear
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_toggle
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32f10x_md.o(RESET)
 </UL>
 <P><STRONG><a name="[27]"></a>TIMER2_IRQHandler</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, gd32f10x_it.o(i.TIMER2_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = TIMER2_IRQHandler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_flag_clear
+<BR>[Calls]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_flag_clear
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[5d]"></a>Test_UASRT2</STRONG> (Thumb, 338 bytes, Stack size 64 bytes, uart_driver.o(i.Test_UASRT2))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = Test_UASRT2 &rArr; USART2_Init &rArr; usart_baudrate_set &rArr; rcu_clock_freq_get
-</UL>
-<BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_P8x16Str
-<LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_1ms
-<LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_toggle
-<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
-<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
-<LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorCtrl3W
-<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Sent_String
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
-</UL>
-<BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[62]"></a>Timer_Init</STRONG> (Thumb, 106 bytes, Stack size 24 bytes, tim_driver.o(i.Timer_Init))
+<P><STRONG><a name="[5f]"></a>Timer_Init</STRONG> (Thumb, 106 bytes, Stack size 24 bytes, tim_driver.o(i.Timer_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = Timer_Init &rArr; nvic_irq_enable
 </UL>
 <BR>[Calls]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_clock_enable
-<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_priority_group_set
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_irq_enable
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_enable
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_deinit
-<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_struct_para_init
-<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_interrupt_flag_clear
-<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_interrupt_enable
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_init
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_priority_group_set
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_irq_enable
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_enable
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_deinit
+<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_struct_para_init
+<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_interrupt_flag_clear
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_interrupt_enable
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -447,68 +443,68 @@ Global Symbols
 <P><STRONG><a name="[30]"></a>USART1_IRQHandler</STRONG> (Thumb, 114 bytes, Stack size 8 bytes, gd32f10x_it.o(i.USART1_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = USART1_IRQHandler &rArr; usart_interrupt_flag_get
 </UL>
-<BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_interrupt_flag_get
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_interrupt_disable
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_data_transmit
-<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_data_receive
+<BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_interrupt_flag_get
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_interrupt_disable
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_data_transmit
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_data_receive
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32f10x_md.o(RESET)
 </UL>
 <P><STRONG><a name="[31]"></a>USART2_IRQHandler</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, gd32f10x_it.o(i.USART2_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = USART2_IRQHandler &rArr; usart_interrupt_flag_get
 </UL>
-<BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_interrupt_flag_get
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_flag_get
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_data_transmit
-<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_data_receive
+<BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_interrupt_flag_get
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_flag_get
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_data_transmit
+<LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_data_receive
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[5e]"></a>USART2_Init</STRONG> (Thumb, 146 bytes, Stack size 8 bytes, uart_driver.o(i.USART2_Init))
+<P><STRONG><a name="[65]"></a>USART2_Init</STRONG> (Thumb, 146 bytes, Stack size 8 bytes, uart_driver.o(i.USART2_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = USART2_Init &rArr; usart_baudrate_set &rArr; rcu_clock_freq_get
 </UL>
 <BR>[Calls]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_clock_enable
-<LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_irq_enable
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_irq_enable
 <LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_init
-<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_word_length_set
-<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_transmit_config
-<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_stop_bit_set
-<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_receive_config
-<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_parity_config
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_interrupt_enable
-<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_hardware_flow_rts_config
-<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_hardware_flow_cts_config
-<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_enable
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_deinit
-<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_baudrate_set
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_word_length_set
+<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_transmit_config
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_stop_bit_set
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_receive_config
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_parity_config
+<LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_interrupt_enable
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_hardware_flow_rts_config
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_hardware_flow_cts_config
+<LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_enable
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_deinit
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_baudrate_set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Test_UASRT2
+<BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[73]"></a>USART_Sent_Byte</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, uart_driver.o(i.USART_Sent_Byte))
+<P><STRONG><a name="[71]"></a>USART_Sent_Byte</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, uart_driver.o(i.USART_Sent_Byte))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = USART_Sent_Byte &rArr; usart_flag_get
 </UL>
-<BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_flag_get
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_data_transmit
+<BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_flag_get
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_data_transmit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Sent_String
+<BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Sent_String
 </UL>
 
-<P><STRONG><a name="[60]"></a>USART_Sent_String</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, uart_driver.o(i.USART_Sent_String))
+<P><STRONG><a name="[72]"></a>USART_Sent_String</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, uart_driver.o(i.USART_Sent_String))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = USART_Sent_String &rArr; USART_Sent_Byte &rArr; usart_flag_get
 </UL>
-<BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Sent_Byte
+<BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Sent_Byte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Test_UASRT2
+<BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[74]"></a>Ultrasonic_Init</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, hcsr04_driver.o(i.Ultrasonic_Init))
+<P><STRONG><a name="[73]"></a>Ultrasonic_Init</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, hcsr04_driver.o(i.Ultrasonic_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = Ultrasonic_Init &rArr; TIM2_Init &rArr; nvic_irq_enable
 </UL>
 <BR>[Calls]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_clock_enable
 <LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_init
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_write
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_write
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -516,29 +512,29 @@ Global Symbols
 <P><STRONG><a name="[5]"></a>UsageFault_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, gd32f10x_it.o(i.UsageFault_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[76]"></a>__0printf$6</STRONG> (Thumb, 22 bytes, Stack size 24 bytes, printf6.o(i.__0printf$6), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<P><STRONG><a name="[75]"></a>__0printf$6</STRONG> (Thumb, 22 bytes, Stack size 24 bytes, printf6.o(i.__0printf$6), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
 <P><STRONG><a name="[9a]"></a>__1printf$6</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf6.o(i.__0printf$6), UNUSED)
 
-<P><STRONG><a name="[5f]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf6.o(i.__0printf$6))
+<P><STRONG><a name="[87]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf6.o(i.__0printf$6))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Test_UASRT2
+<BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[78]"></a>__0sprintf$6</STRONG> (Thumb, 34 bytes, Stack size 24 bytes, printf6.o(i.__0sprintf$6), UNUSED)
+<P><STRONG><a name="[77]"></a>__0sprintf$6</STRONG> (Thumb, 34 bytes, Stack size 24 bytes, printf6.o(i.__0sprintf$6), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sputc
-<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
 <P><STRONG><a name="[9b]"></a>__1sprintf$6</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf6.o(i.__0sprintf$6), UNUSED)
 
-<P><STRONG><a name="[61]"></a>__2sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf6.o(i.__0sprintf$6))
+<P><STRONG><a name="[50]"></a>__2sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf6.o(i.__0sprintf$6))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2sprintf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Test_UASRT2
+<BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Push_Red_Ball
 </UL>
 
 <P><STRONG><a name="[9c]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
@@ -548,55 +544,55 @@ Global Symbols
 <P><STRONG><a name="[9e]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
 <P><STRONG><a name="[4a]"></a>delay_1ms</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, systick.o(i.delay_1ms))
-<BR><BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Test_UASRT2
+<BR><BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Push_Red_Ball
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
 <LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[4f]"></a>delay_decrement</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, systick.o(i.delay_decrement))
+<P><STRONG><a name="[52]"></a>delay_decrement</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, systick.o(i.delay_decrement))
 <BR><BR>[Called By]<UL><LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 </UL>
 
-<P><STRONG><a name="[7c]"></a>encoder1_config</STRONG> (Thumb, 142 bytes, Stack size 24 bytes, enc_driver.o(i.encoder1_config))
+<P><STRONG><a name="[7b]"></a>encoder1_config</STRONG> (Thumb, 142 bytes, Stack size 24 bytes, enc_driver.o(i.encoder1_config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = encoder1_config &rArr; gpio_pin_remap_config
 </UL>
 <BR>[Calls]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_clock_enable
-<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_pin_remap_config
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_pin_remap_config
 <LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_init
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_enable
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_deinit
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_auto_reload_shadow_enable
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_quadrature_decoder_mode_config
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_init
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_enable
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_deinit
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_auto_reload_shadow_enable
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_quadrature_decoder_mode_config
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[80]"></a>encoder2_config</STRONG> (Thumb, 132 bytes, Stack size 24 bytes, enc_driver.o(i.encoder2_config))
+<P><STRONG><a name="[7f]"></a>encoder2_config</STRONG> (Thumb, 132 bytes, Stack size 24 bytes, enc_driver.o(i.encoder2_config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = encoder2_config &rArr; gpio_pin_remap_config
 </UL>
 <BR>[Calls]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_clock_enable
-<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_pin_remap_config
+<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_pin_remap_config
 <LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_init
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_enable
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_deinit
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_auto_reload_shadow_enable
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_quadrature_decoder_mode_config
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_init
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_enable
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_deinit
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_auto_reload_shadow_enable
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_quadrature_decoder_mode_config
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[81]"></a>encoder3_config</STRONG> (Thumb, 124 bytes, Stack size 24 bytes, enc_driver.o(i.encoder3_config))
+<P><STRONG><a name="[80]"></a>encoder3_config</STRONG> (Thumb, 124 bytes, Stack size 24 bytes, enc_driver.o(i.encoder3_config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = encoder3_config &rArr; gpio_init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_clock_enable
 <LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_init
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_enable
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_deinit
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_auto_reload_shadow_enable
-<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_quadrature_decoder_mode_config
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_init
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_enable
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_deinit
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_auto_reload_shadow_enable
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_quadrature_decoder_mode_config
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -604,8 +600,8 @@ Global Symbols
 <P><STRONG><a name="[39]"></a>fputc</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, uart_driver.o(i.fputc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = fputc &rArr; usart_flag_get
 </UL>
-<BR>[Calls]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_flag_get
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_data_transmit
+<BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_flag_get
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_data_transmit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> printf6.o(i.__0printf$6)
 </UL>
@@ -619,43 +615,43 @@ Global Symbols
 <P><STRONG><a name="[41]"></a>gpio_bit_set</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, gd32f10x_gpio.o(i.gpio_bit_set))
 <BR><BR>[Called By]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_WrDat
 <LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_WrCmd
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_init
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_init
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
 <LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MotorCtrl3W
 </UL>
 
-<P><STRONG><a name="[75]"></a>gpio_bit_write</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gd32f10x_gpio.o(i.gpio_bit_write))
-<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ultrasonic_Init
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_toggle
+<P><STRONG><a name="[74]"></a>gpio_bit_write</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gd32f10x_gpio.o(i.gpio_bit_write))
+<BR><BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ultrasonic_Init
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_toggle
 </UL>
 
 <P><STRONG><a name="[44]"></a>gpio_init</STRONG> (Thumb, 172 bytes, Stack size 20 bytes, gd32f10x_gpio.o(i.gpio_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = gpio_init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sensor_init
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_init
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key_init
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder3_config
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder2_config
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder1_config
-<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ultrasonic_Init
+<BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sensor_init
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_init
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key_init
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder3_config
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder2_config
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder1_config
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ultrasonic_Init
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
 <LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Init
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
 </UL>
 
-<P><STRONG><a name="[84]"></a>gpio_input_bit_get</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32f10x_gpio.o(i.gpio_input_bit_get))
-<BR><BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_toggle
+<P><STRONG><a name="[83]"></a>gpio_input_bit_get</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32f10x_gpio.o(i.gpio_input_bit_get))
+<BR><BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_toggle
 </UL>
 
-<P><STRONG><a name="[7d]"></a>gpio_pin_remap_config</STRONG> (Thumb, 138 bytes, Stack size 20 bytes, gd32f10x_gpio.o(i.gpio_pin_remap_config))
+<P><STRONG><a name="[7c]"></a>gpio_pin_remap_config</STRONG> (Thumb, 138 bytes, Stack size 20 bytes, gd32f10x_gpio.o(i.gpio_pin_remap_config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = gpio_pin_remap_config
 </UL>
-<BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder2_config
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder1_config
+<BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder2_config
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder1_config
 </UL>
 
-<P><STRONG><a name="[82]"></a>key_init</STRONG> (Thumb, 108 bytes, Stack size 8 bytes, key_driver.o(i.key_init))
+<P><STRONG><a name="[81]"></a>key_init</STRONG> (Thumb, 108 bytes, Stack size 8 bytes, key_driver.o(i.key_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = key_init &rArr; gpio_init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_clock_enable
@@ -664,7 +660,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[83]"></a>led_init</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, led_driver.o(i.led_init))
+<P><STRONG><a name="[82]"></a>led_init</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, led_driver.o(i.led_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = led_init &rArr; gpio_init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_clock_enable
@@ -674,13 +670,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[5c]"></a>led_toggle</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, led_driver.o(i.led_toggle))
+<P><STRONG><a name="[51]"></a>led_toggle</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, led_driver.o(i.led_toggle))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = led_toggle
 </UL>
-<BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_input_bit_get
-<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_write
+<BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_input_bit_get
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gpio_bit_write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Test_UASRT2
+<BR>[Called By]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Push_Red_Ball
 <LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER0_UP_IRQHandler
 </UL>
 
@@ -689,87 +685,91 @@ Global Symbols
 <LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_WrCmd
 </UL>
 
-<P><STRONG><a name="[36]"></a>main</STRONG> (Thumb, 158 bytes, Stack size 0 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = main &rArr; Test_UASRT2 &rArr; USART2_Init &rArr; usart_baudrate_set &rArr; rcu_clock_freq_get
+<P><STRONG><a name="[36]"></a>main</STRONG> (Thumb, 194 bytes, Stack size 0 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = main &rArr; Push_Red_Ball &rArr; OLED_P8x16Str &rArr; OLED_Set_Pos &rArr; OLED_WrCmd
 </UL>
 <BR>[Calls]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_clock_enable
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_ahb_clock_config
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_config
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sensor_init
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_init
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key_init
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder3_config
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder2_config
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder1_config
+<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_ahb_clock_config
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_config
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sensor_init
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_init
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key_init
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder3_config
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder2_config
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder1_config
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_1ms
-<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ultrasonic_Init
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
-<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Test_UASRT2
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ultrasonic_Init
+<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Sent_String
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Push_Red_Ball
+<LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_P8x16Str
 <LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_P6x8Str
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
 <LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_CLS
 <LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Init
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[59]"></a>nvic_irq_enable</STRONG> (Thumb, 162 bytes, Stack size 24 bytes, gd32f10x_misc.o(i.nvic_irq_enable))
+<P><STRONG><a name="[5c]"></a>nvic_irq_enable</STRONG> (Thumb, 162 bytes, Stack size 24 bytes, gd32f10x_misc.o(i.nvic_irq_enable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = nvic_irq_enable
 </UL>
-<BR>[Calls]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_priority_group_set
+<BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_priority_group_set
 </UL>
-<BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
-</UL>
-
-<P><STRONG><a name="[58]"></a>nvic_priority_group_set</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gd32f10x_misc.o(i.nvic_priority_group_set))
-<BR><BR>[Called By]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_irq_enable
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
 </UL>
 
-<P><STRONG><a name="[51]"></a>nvic_vector_table_set</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32f10x_misc.o(i.nvic_vector_table_set))
+<P><STRONG><a name="[5b]"></a>nvic_priority_group_set</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gd32f10x_misc.o(i.nvic_priority_group_set))
+<BR><BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;nvic_irq_enable
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
+</UL>
+
+<P><STRONG><a name="[54]"></a>nvic_vector_table_set</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32f10x_misc.o(i.nvic_vector_table_set))
 <BR><BR>[Called By]<UL><LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
 
-<P><STRONG><a name="[86]"></a>rcu_ahb_clock_config</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, gd32f10x_rcu.o(i.rcu_ahb_clock_config))
+<P><STRONG><a name="[85]"></a>rcu_ahb_clock_config</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, gd32f10x_rcu.o(i.rcu_ahb_clock_config))
 <BR><BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[90]"></a>rcu_clock_freq_get</STRONG> (Thumb, 264 bytes, Stack size 80 bytes, gd32f10x_rcu.o(i.rcu_clock_freq_get))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = rcu_clock_freq_get
 </UL>
-<BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_baudrate_set
+<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_baudrate_set
 </UL>
 
 <P><STRONG><a name="[43]"></a>rcu_periph_clock_enable</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, gd32f10x_rcu.o(i.rcu_periph_clock_enable))
-<BR><BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sensor_init
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_init
-<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key_init
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder3_config
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder2_config
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder1_config
-<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ultrasonic_Init
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
+<BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sensor_init
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;led_init
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;key_init
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder3_config
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder2_config
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder1_config
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ultrasonic_Init
+<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
 <LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Init
 <LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_config
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
 </UL>
 
 <P><STRONG><a name="[8f]"></a>rcu_periph_reset_disable</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, gd32f10x_rcu.o(i.rcu_periph_reset_disable))
-<BR><BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_deinit
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_deinit
+<BR><BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_deinit
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_deinit
 </UL>
 
 <P><STRONG><a name="[8e]"></a>rcu_periph_reset_enable</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, gd32f10x_rcu.o(i.rcu_periph_reset_enable))
-<BR><BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_deinit
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_deinit
+<BR><BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_deinit
+<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;usart_deinit
 </UL>
 
-<P><STRONG><a name="[87]"></a>sensor_init</STRONG> (Thumb, 84 bytes, Stack size 8 bytes, photoelectric.o(i.sensor_init))
+<P><STRONG><a name="[86]"></a>sensor_init</STRONG> (Thumb, 84 bytes, Stack size 8 bytes, photoelectric.o(i.sensor_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = sensor_init &rArr; gpio_init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_clock_enable
@@ -778,7 +778,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[85]"></a>systick_config</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, systick.o(i.systick_config))
+<P><STRONG><a name="[84]"></a>systick_config</STRONG> (Thumb, 74 bytes, Stack size 8 bytes, systick.o(i.systick_config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = systick_config &rArr; NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_SetPriority
@@ -786,10 +786,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[36]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[7f]"></a>timer_auto_reload_shadow_enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gd32f10x_timer.o(i.timer_auto_reload_shadow_enable))
-<BR><BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder3_config
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder2_config
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder1_config
+<P><STRONG><a name="[7e]"></a>timer_auto_reload_shadow_enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gd32f10x_timer.o(i.timer_auto_reload_shadow_enable))
+<BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder3_config
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder2_config
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder1_config
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_config
 </UL>
 
@@ -816,179 +816,179 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = timer_config &rArr; timer_deinit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_clock_enable
-<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_enable
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_deinit
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_enable
+<LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_deinit
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_channel_output_shadow_config
 <LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_channel_output_pulse_value_config
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_channel_output_mode_config
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_channel_output_config
-<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_auto_reload_shadow_enable
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_auto_reload_shadow_enable
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_primary_output_config
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_init
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Init
 </UL>
 
-<P><STRONG><a name="[53]"></a>timer_deinit</STRONG> (Thumb, 210 bytes, Stack size 8 bytes, gd32f10x_timer.o(i.timer_deinit))
+<P><STRONG><a name="[56]"></a>timer_deinit</STRONG> (Thumb, 210 bytes, Stack size 8 bytes, gd32f10x_timer.o(i.timer_deinit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = timer_deinit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_reset_enable
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_reset_disable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder3_config
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder2_config
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder1_config
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
+<BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder3_config
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder2_config
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder1_config
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_config
 </UL>
 
-<P><STRONG><a name="[5a]"></a>timer_enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gd32f10x_timer.o(i.timer_enable))
-<BR><BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder3_config
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder2_config
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder1_config
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
+<P><STRONG><a name="[5d]"></a>timer_enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gd32f10x_timer.o(i.timer_enable))
+<BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder3_config
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder2_config
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder1_config
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_config
 </UL>
 
-<P><STRONG><a name="[5b]"></a>timer_flag_clear</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gd32f10x_timer.o(i.timer_flag_clear))
+<P><STRONG><a name="[5e]"></a>timer_flag_clear</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gd32f10x_timer.o(i.timer_flag_clear))
 <BR><BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER2_IRQHandler
 <LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER0_UP_IRQHandler
 </UL>
 
-<P><STRONG><a name="[55]"></a>timer_init</STRONG> (Thumb, 170 bytes, Stack size 0 bytes, gd32f10x_timer.o(i.timer_init))
-<BR><BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder3_config
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder2_config
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder1_config
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
+<P><STRONG><a name="[58]"></a>timer_init</STRONG> (Thumb, 170 bytes, Stack size 0 bytes, gd32f10x_timer.o(i.timer_init))
+<BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder3_config
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder2_config
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder1_config
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
 <LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_config
 </UL>
 
-<P><STRONG><a name="[57]"></a>timer_interrupt_enable</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, gd32f10x_timer.o(i.timer_interrupt_enable))
-<BR><BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
+<P><STRONG><a name="[5a]"></a>timer_interrupt_enable</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, gd32f10x_timer.o(i.timer_interrupt_enable))
+<BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
 </UL>
 
-<P><STRONG><a name="[56]"></a>timer_interrupt_flag_clear</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gd32f10x_timer.o(i.timer_interrupt_flag_clear))
-<BR><BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
+<P><STRONG><a name="[59]"></a>timer_interrupt_flag_clear</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gd32f10x_timer.o(i.timer_interrupt_flag_clear))
+<BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
 </UL>
 
 <P><STRONG><a name="[8d]"></a>timer_primary_output_config</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, gd32f10x_timer.o(i.timer_primary_output_config))
 <BR><BR>[Called By]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;timer_config
 </UL>
 
-<P><STRONG><a name="[7e]"></a>timer_quadrature_decoder_mode_config</STRONG> (Thumb, 64 bytes, Stack size 12 bytes, gd32f10x_timer.o(i.timer_quadrature_decoder_mode_config))
+<P><STRONG><a name="[7d]"></a>timer_quadrature_decoder_mode_config</STRONG> (Thumb, 64 bytes, Stack size 12 bytes, gd32f10x_timer.o(i.timer_quadrature_decoder_mode_config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = timer_quadrature_decoder_mode_config
 </UL>
-<BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder3_config
-<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder2_config
-<LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder1_config
+<BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder3_config
+<LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder2_config
+<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;encoder1_config
 </UL>
 
-<P><STRONG><a name="[54]"></a>timer_struct_para_init</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, gd32f10x_timer.o(i.timer_struct_para_init))
-<BR><BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
+<P><STRONG><a name="[57]"></a>timer_struct_para_init</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, gd32f10x_timer.o(i.timer_struct_para_init))
+<BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer_Init
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM2_Init
 </UL>
 
-<P><STRONG><a name="[69]"></a>usart_baudrate_set</STRONG> (Thumb, 136 bytes, Stack size 32 bytes, gd32f10x_usart.o(i.usart_baudrate_set))
+<P><STRONG><a name="[67]"></a>usart_baudrate_set</STRONG> (Thumb, 136 bytes, Stack size 32 bytes, gd32f10x_usart.o(i.usart_baudrate_set))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = usart_baudrate_set &rArr; rcu_clock_freq_get
 </UL>
 <BR>[Calls]<UL><LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_clock_freq_get
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
 </UL>
 
-<P><STRONG><a name="[64]"></a>usart_data_receive</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gd32f10x_usart.o(i.usart_data_receive))
+<P><STRONG><a name="[61]"></a>usart_data_receive</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gd32f10x_usart.o(i.usart_data_receive))
 <BR><BR>[Called By]<UL><LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_IRQHandler
 <LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
-<P><STRONG><a name="[66]"></a>usart_data_transmit</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, gd32f10x_usart.o(i.usart_data_transmit))
+<P><STRONG><a name="[63]"></a>usart_data_transmit</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, gd32f10x_usart.o(i.usart_data_transmit))
 <BR><BR>[Called By]<UL><LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_IRQHandler
 <LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputc
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Sent_Byte
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Sent_Byte
 </UL>
 
-<P><STRONG><a name="[68]"></a>usart_deinit</STRONG> (Thumb, 136 bytes, Stack size 8 bytes, gd32f10x_usart.o(i.usart_deinit))
+<P><STRONG><a name="[66]"></a>usart_deinit</STRONG> (Thumb, 136 bytes, Stack size 8 bytes, gd32f10x_usart.o(i.usart_deinit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = usart_deinit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_reset_enable
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_reset_disable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
 </UL>
 
-<P><STRONG><a name="[71]"></a>usart_enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gd32f10x_usart.o(i.usart_enable))
-<BR><BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
+<P><STRONG><a name="[6f]"></a>usart_enable</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, gd32f10x_usart.o(i.usart_enable))
+<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
 </UL>
 
-<P><STRONG><a name="[67]"></a>usart_flag_get</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, gd32f10x_usart.o(i.usart_flag_get))
+<P><STRONG><a name="[64]"></a>usart_flag_get</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, gd32f10x_usart.o(i.usart_flag_get))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = usart_flag_get
 </UL>
 <BR>[Called By]<UL><LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_IRQHandler
 <LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputc
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Sent_Byte
+<LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Sent_Byte
 </UL>
 
-<P><STRONG><a name="[6e]"></a>usart_hardware_flow_cts_config</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, gd32f10x_usart.o(i.usart_hardware_flow_cts_config))
-<BR><BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
+<P><STRONG><a name="[6c]"></a>usart_hardware_flow_cts_config</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, gd32f10x_usart.o(i.usart_hardware_flow_cts_config))
+<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
 </UL>
 
-<P><STRONG><a name="[6d]"></a>usart_hardware_flow_rts_config</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, gd32f10x_usart.o(i.usart_hardware_flow_rts_config))
-<BR><BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
+<P><STRONG><a name="[6b]"></a>usart_hardware_flow_rts_config</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, gd32f10x_usart.o(i.usart_hardware_flow_rts_config))
+<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
 </UL>
 
-<P><STRONG><a name="[65]"></a>usart_interrupt_disable</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, gd32f10x_usart.o(i.usart_interrupt_disable))
+<P><STRONG><a name="[62]"></a>usart_interrupt_disable</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, gd32f10x_usart.o(i.usart_interrupt_disable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = usart_interrupt_disable
 </UL>
 <BR>[Called By]<UL><LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
-<P><STRONG><a name="[72]"></a>usart_interrupt_enable</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, gd32f10x_usart.o(i.usart_interrupt_enable))
+<P><STRONG><a name="[70]"></a>usart_interrupt_enable</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, gd32f10x_usart.o(i.usart_interrupt_enable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = usart_interrupt_enable
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
 </UL>
 
-<P><STRONG><a name="[63]"></a>usart_interrupt_flag_get</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, gd32f10x_usart.o(i.usart_interrupt_flag_get))
+<P><STRONG><a name="[60]"></a>usart_interrupt_flag_get</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, gd32f10x_usart.o(i.usart_interrupt_flag_get))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = usart_interrupt_flag_get
 </UL>
 <BR>[Called By]<UL><LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_IRQHandler
 <LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
-<P><STRONG><a name="[6c]"></a>usart_parity_config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32f10x_usart.o(i.usart_parity_config))
-<BR><BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
+<P><STRONG><a name="[6a]"></a>usart_parity_config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32f10x_usart.o(i.usart_parity_config))
+<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
 </UL>
 
-<P><STRONG><a name="[70]"></a>usart_receive_config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32f10x_usart.o(i.usart_receive_config))
-<BR><BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
+<P><STRONG><a name="[6e]"></a>usart_receive_config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32f10x_usart.o(i.usart_receive_config))
+<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
 </UL>
 
-<P><STRONG><a name="[6b]"></a>usart_stop_bit_set</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32f10x_usart.o(i.usart_stop_bit_set))
-<BR><BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
+<P><STRONG><a name="[69]"></a>usart_stop_bit_set</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32f10x_usart.o(i.usart_stop_bit_set))
+<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
 </UL>
 
-<P><STRONG><a name="[6f]"></a>usart_transmit_config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32f10x_usart.o(i.usart_transmit_config))
-<BR><BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
+<P><STRONG><a name="[6d]"></a>usart_transmit_config</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32f10x_usart.o(i.usart_transmit_config))
+<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
 </UL>
 
-<P><STRONG><a name="[6a]"></a>usart_word_length_set</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32f10x_usart.o(i.usart_word_length_set))
-<BR><BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
+<P><STRONG><a name="[68]"></a>usart_word_length_set</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, gd32f10x_usart.o(i.usart_word_length_set))
+<BR><BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_Init
 </UL>
 <P>
 <H3>
 Local Symbols
 </H3>
 <P><STRONG><a name="[88]"></a>system_clock_72m_hxtal</STRONG> (Thumb, 182 bytes, Stack size 0 bytes, system_gd32f10x.o(i.system_clock_72m_hxtal))
-<BR><BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_clock_config
+<BR><BR>[Called By]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_clock_config
 </UL>
 
-<P><STRONG><a name="[50]"></a>system_clock_config</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, system_gd32f10x.o(i.system_clock_config))
+<P><STRONG><a name="[53]"></a>system_clock_config</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, system_gd32f10x.o(i.system_clock_config))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = system_clock_config
 </UL>
 <BR>[Calls]<UL><LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;system_clock_72m_hxtal
@@ -999,28 +999,28 @@ Local Symbols
 <P><STRONG><a name="[89]"></a>NVIC_SetPriority</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, systick.o(i.NVIC_SetPriority))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = NVIC_SetPriority
 </UL>
-<BR>[Called By]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_config
+<BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;systick_config
 </UL>
 
-<P><STRONG><a name="[77]"></a>_printf_core</STRONG> (Thumb, 748 bytes, Stack size 96 bytes, printf6.o(i._printf_core), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_pre_padding
-<LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_post_padding
+<P><STRONG><a name="[76]"></a>_printf_core</STRONG> (Thumb, 748 bytes, Stack size 96 bytes, printf6.o(i._printf_core), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uidivmod
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_pre_padding
+<LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_post_padding
 </UL>
-<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0sprintf$6
-<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0printf$6
-</UL>
-
-<P><STRONG><a name="[7b]"></a>_printf_post_padding</STRONG> (Thumb, 36 bytes, Stack size 24 bytes, printf6.o(i._printf_post_padding), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0sprintf$6
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0printf$6
 </UL>
 
-<P><STRONG><a name="[79]"></a>_printf_pre_padding</STRONG> (Thumb, 46 bytes, Stack size 24 bytes, printf6.o(i._printf_pre_padding), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<P><STRONG><a name="[7a]"></a>_printf_post_padding</STRONG> (Thumb, 36 bytes, Stack size 24 bytes, printf6.o(i._printf_post_padding), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+</UL>
+
+<P><STRONG><a name="[78]"></a>_printf_pre_padding</STRONG> (Thumb, 46 bytes, Stack size 24 bytes, printf6.o(i._printf_pre_padding), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
 <P><STRONG><a name="[3a]"></a>_sputc</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, printf6.o(i._sputc))
-<BR><BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0sprintf$6
+<BR><BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0sprintf$6
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> printf6.o(i.__0sprintf$6)
 </UL><P>

@@ -65,7 +65,23 @@ int main(void)
 	
 	delay_1ms(5);
 
-	Test_UASRT2();
+	USART2_Init(115200);                //初始化USART2 115200 使能 并开启串口中断接受
+   
+  OLED_Init();                         // OLED初始化
+  OLED_P8x16Str(10, 0,"Test USART2");  // 字符串
+	delay_1ms(50);
+	printf("USART2 Init OK \n");
+  USART_Sent_String(USART2,"USART2 Init OK\n");
+	
+	
+	
+	
+	while(1)
+	{
+		
+		Push_Red_Ball();
+		
+	}
 	while(1)
 	{
 	delay_1ms(100);
