@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "lq_led.h": "c",
+        "systick.h": "c",
+        "gd32f10x.h": "c",
+        "lq_key.h": "c",
+        "gd32f10x_eval.h": "c",
+        "lq_usart.h": "c",
+        "gd32f10x_misc.h": "c",
+        "oled_driver.h": "c",
+        "enc_driver.h": "c",
+        "photoelectric.h": "c"
+    }
+}
