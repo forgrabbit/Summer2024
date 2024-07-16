@@ -14,7 +14,7 @@ void USART_Sent_Data(uint32_t usart_periph ,uint8_t *data);
 void USART_Sent_String(uint32_t usart_periph,char *str);
 
 void Test_UASRT1(void);
-void Test_UASRT2(void);
+void Push_Red_Ball(void);
 void Data_parsing(void);
 
 #endif

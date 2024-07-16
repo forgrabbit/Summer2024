@@ -172,31 +172,23 @@ void Test_UASRT1(void)
 }
 
 unsigned char receive_data;
-void Test_UASRT2(void)
+void Push_Red_Ball(void)
 {
 	char txt[64];
 	
-	int duty = 1900;
+	int duty = 1800;
 	int balance = 600;
 	char receive_data_last_time; 
 	receive_data_last_time = '1';
 	
-	USART2_Init(115200);                //初始化USART2 115200 使能 并开启串口中断接受
-   
-  OLED_Init();                         // OLED初始化
-  OLED_P8x16Str(10, 0,"Test USART2");  // 字符串
-	delay_1ms(50);
-	printf("USART2 Init OK \n");
-  USART_Sent_String(USART2,"USART2 Init OK\n");
-	
-	while(1)
+	//while(1)
 	{
 		//串口中断服务中收什么发什么
 		sprintf(txt, "%c",receive_data);
 		OLED_P8x16Str(0, 4, txt);
 		led_toggle();
 		delay_1ms(100);
-		
+		//
 		if(receive_data == '3')//turn left
 		{
 			MotorCtrl3W(-800 , -800, -800);
@@ -231,22 +223,35 @@ void Test_UASRT2(void)
 			{
 				MotorCtrl3W(-800 , -800, -800);
 				delay_1ms(200);
-				MotorCtrl3W(0 , 0,  0);
+				MotorCtrl3W(-500 , -500,  -500);
 				delay_1ms(1);
 				receive_data = '0';
 			}
 			else
 			{
-				MotorCtrl3W(-800 , -800, -800);
-				delay_1ms(20);
-				MotorCtrl3W(-500 , -500, -500);
-				delay_1ms(20);
+				MotorCtrl3W(800 , 800, 800);
+				delay_1ms(200);
+				MotorCtrl3W(500 , 500,  500);
+				delay_1ms(1);
+				receive_data = '0';	
 			}
 		}
-		delay_1ms(1);
+		else if(receive_data == '4')// already find ball, finding goal now
+		{
+			MotorCtrl3W(1200, 0, 0);
+			delay_1ms(20);
+		}
+		else if(receive_data == '5')// already goal, do not forward in the goal
+		{
+		MotorCtrl3W(0, 1000, -1000);
+		delay_1ms(5000);
+		MotorCtrl3W(0 , 0, 0);
+		delay_1ms(20000);
+		}
+		
 	}
-}
-
+	delay_1ms(1);
+	}
 void Data_parsing()   //数据解析
 {
 	//帧格式，0xFA xx xx xx 0xAF
