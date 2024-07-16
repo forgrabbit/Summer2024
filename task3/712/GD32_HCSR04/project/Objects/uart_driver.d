@@ -1,7 +1,7 @@
 .\objects\uart_driver.o: ..\User\APP\src\uart_driver.c
-.\objects\uart_driver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\uart_driver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\objects\uart_driver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\uart_driver.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\uart_driver.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\uart_driver.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\string.h
 .\objects\uart_driver.o: ..\CMSIS\gd32f10x.h
 .\objects\uart_driver.o: ..\CMSIS\core_cm3.h
 .\objects\uart_driver.o: ..\CMSIS\core_cmInstr.h
@@ -16,7 +16,7 @@
 .\objects\uart_driver.o: ..\Library\Include\gd32f10x_dac.h
 .\objects\uart_driver.o: ..\Library\Include\gd32f10x_dma.h
 .\objects\uart_driver.o: ..\Library\Include\gd32f10x_enet.h
-.\objects\uart_driver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\uart_driver.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\uart_driver.o: ..\Library\Include\gd32f10x_exmc.h
 .\objects\uart_driver.o: ..\Library\Include\gd32f10x_exti.h
 .\objects\uart_driver.o: ..\Library\Include\gd32f10x_fmc.h

@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\GD32_HCSR04.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\GD32_HCSR04.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Fri Jul 12 15:14:38 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Tue Jul 16 22:08:28 2024
 <BR><P>
-<H3>Maximum Stack Usage =        256 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        264 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; Test_UASRT2 &rArr; USART2_Init &rArr; usart_baudrate_set &rArr; rcu_clock_freq_get
 <P>
@@ -418,8 +418,8 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_gd32f10x_md.o(RESET)
 </UL>
-<P><STRONG><a name="[5e]"></a>Test_UASRT2</STRONG> (Thumb, 556 bytes, Stack size 80 bytes, uart_driver.o(i.Test_UASRT2))
-<BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = Test_UASRT2 &rArr; USART2_Init &rArr; usart_baudrate_set &rArr; rcu_clock_freq_get
+<P><STRONG><a name="[5e]"></a>Test_UASRT2</STRONG> (Thumb, 652 bytes, Stack size 88 bytes, uart_driver.o(i.Test_UASRT2))
+<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = Test_UASRT2 &rArr; USART2_Init &rArr; usart_baudrate_set &rArr; rcu_clock_freq_get
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_P8x16Str
 <LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_1ms
@@ -656,7 +656,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[36]"></a>main</STRONG> (Thumb, 206 bytes, Stack size 56 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 256<LI>Call Chain = main &rArr; Test_UASRT2 &rArr; USART2_Init &rArr; usart_baudrate_set &rArr; rcu_clock_freq_get
+<BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = main &rArr; Test_UASRT2 &rArr; USART2_Init &rArr; usart_baudrate_set &rArr; rcu_clock_freq_get
 </UL>
 <BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_periph_clock_enable
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rcu_ahb_clock_config

@@ -1,7 +1,7 @@
 .\objects\main.o: ..\User\main.c
 .\objects\main.o: ..\CMSIS\gd32f10x.h
 .\objects\main.o: ..\CMSIS\core_cm3.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\main.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\main.o: ..\CMSIS\core_cmInstr.h
 .\objects\main.o: ..\CMSIS\core_cmFunc.h
 .\objects\main.o: ..\CMSIS\system_gd32f10x.h
@@ -14,7 +14,7 @@
 .\objects\main.o: ..\Library\Include\gd32f10x_dac.h
 .\objects\main.o: ..\Library\Include\gd32f10x_dma.h
 .\objects\main.o: ..\Library\Include\gd32f10x_enet.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\main.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\main.o: ..\Library\Include\gd32f10x_exmc.h
 .\objects\main.o: ..\Library\Include\gd32f10x_exti.h
 .\objects\main.o: ..\Library\Include\gd32f10x_fmc.h
@@ -32,7 +32,7 @@
 .\objects\main.o: ..\Library\Include\gd32f10x_usart.h
 .\objects\main.o: ..\Library\Include\gd32f10x_wwdgt.h
 .\objects\main.o: ..\User\systick.h
-.\objects\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\main.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: ..\User\APP\inc\led_driver.h
 .\objects\main.o: ..\User\APP\inc\key_driver.h
 .\objects\main.o: ..\User\APP\inc\oled_driver.h

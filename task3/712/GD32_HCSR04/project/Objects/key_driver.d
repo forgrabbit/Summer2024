@@ -1,7 +1,7 @@
 .\objects\key_driver.o: ..\User\APP\src\key_driver.c
 .\objects\key_driver.o: ..\User\APP\inc\key_driver.h
 .\objects\key_driver.o: ..\User\systick.h
-.\objects\key_driver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\key_driver.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\key_driver.o: ..\User\APP\inc\led_driver.h
 .\objects\key_driver.o: ..\CMSIS\gd32f10x.h
 .\objects\key_driver.o: ..\CMSIS\core_cm3.h
@@ -17,7 +17,7 @@
 .\objects\key_driver.o: ..\Library\Include\gd32f10x_dac.h
 .\objects\key_driver.o: ..\Library\Include\gd32f10x_dma.h
 .\objects\key_driver.o: ..\Library\Include\gd32f10x_enet.h
-.\objects\key_driver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\key_driver.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\key_driver.o: ..\Library\Include\gd32f10x_exmc.h
 .\objects\key_driver.o: ..\Library\Include\gd32f10x_exti.h
 .\objects\key_driver.o: ..\Library\Include\gd32f10x_fmc.h
