@@ -184,6 +184,8 @@ void Test_UASRT2(void)
 
 	int balance = 600;
 	
+	int increased_balance = 1000;
+	
 	USART2_Init(115200);                //初始化USART2 115200 使能 并开启串口中断接受
    
   //OLED_Init();                         // OLED初始化
@@ -216,19 +218,30 @@ void Test_UASRT2(void)
 		{
 			MotorCtrl3W(0 , -duty , duty - balance);
 			receive_data_last_time = receive_data;
-			receive_data_last_time_rotate = receive_data;
-			
+			receive_data_last_time_rotate = receive_data;		
+		}
+		else if(receive_data == 'c')//turn left
+		{
+			MotorCtrl3W(0 , -duty , duty - increased_balance);
+			receive_data_last_time = receive_data;
+			receive_data_last_time_rotate = '3';			
 		}
 		else if (receive_data == '1')//straight forward
 		{
 		   MotorCtrl3W(0,-duty - accelerate, duty + accelerate);
-			receive_data_last_time = receive_data;
+			 receive_data_last_time = receive_data;
 		}
 		else if (receive_data == '2')//turn right
 		{
 		  MotorCtrl3W(0 , -duty + balance, duty);
 			receive_data_last_time = receive_data;
 			receive_data_last_time_rotate = receive_data;
+		}
+		else if (receive_data == 'b')//turn right
+		{
+		  MotorCtrl3W(0 , -duty + increased_balance, duty);
+			receive_data_last_time = receive_data;
+			receive_data_last_time_rotate = '2';
 		}
 		else if (receive_data == '0')//rotate
 		{
@@ -268,23 +281,27 @@ void Test_UASRT2(void)
 		}*/
 		else if(receive_data == '6')// right
 		{
-			MotorCtrl3W(-1200 , 800 , 800 );
+			MotorCtrl3W(-1500 , -800 , 800 );
 			receive_data_last_time = receive_data;
+			receive_data_last_time_rotate = '2';
 		}
 		else if(receive_data == '7')//left
 		{
-			MotorCtrl3W(1200 , 800 , 800 );
+			MotorCtrl3W(1500 , -800 , 800 );
 			receive_data_last_time = receive_data;
+			receive_data_last_time_rotate = '3';
 		}
 		else if(receive_data == '8')//
 		{
 			MotorCtrl3W( 0, -2000 , 1200 );
 			receive_data_last_time = receive_data;
+			receive_data_last_time_rotate = '2';
 		}
 		else if(receive_data == '9')//
 		{
 			MotorCtrl3W( 0 , -1200, 2000 );
 			receive_data_last_time = receive_data;
+			receive_data_last_time_rotate = '3';
 		}
 		else if(receive_data == '5')
 		{

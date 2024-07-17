@@ -10,7 +10,7 @@ threshold_index = 0 # 0 for red, 1 for green, 2 for blue
 
 # Color Tracking Thresholds (L Min, L Max, A Min, A Max, B Min, B Max)
 # The below thresholds track in general red/green/blue things. You may wish to tune them...
-thresholds = [(30, 100, 15, 127, 15, 127), # generic_red_thresholds
+thresholds = [(19, 66, 33, 125, -20, 33), # generic_red_thresholds
               (30, 100, -64, -8, -32, 32), # generic_green_thresholds
               (0, 30, 0, 64, -128, 0),# generic_blue_thresholds
               (31, 67, 33, 114, -14, 39),#redball
@@ -40,32 +40,53 @@ while True:
     red_right = False
     red_straight = False
     # 在图像中查找红色色块
-    for blob in img.find_blobs([thresholds[3]], pixels_threshold=200, area_threshold=200, merge=True):
-        # 如果检测到红色色块
-        if blob.code() == 1:
-            # 获取色块的中心坐标
-            cx = blob.cx()
-            cy = blob.cy()
-            print(clock.fps())
-            print("cx:", cx)
-            print("cy：",cy)
-            # 根据色块的位置发送不同的数字给UART串口
-            if cx < img.width() // 3:  # 色块在左侧
-                uart.write("%d" % 3)  # 发送数字3
-                print("RD: 3")
-                red_left = True
-            elif cx > 2 * img.width() // 3:  # 色块在右侧
-                uart.write("%d" % 2)  # 发送数字2
-                print("RD: 2")
-                red_right = True
-            elif cx>img.width() //3 and cx<2 * img.width()//3:    # 色块在中间位置
-                uart.write("%d" % 1)
-                print("RD: 1")
-                red_straight = True    # 发送数字1
+    for blob in img.find_blobs([thresholds[3]], pixels_threshold=30, area_threshold=30, merge=True):
+        if blob_red.code() == 1:
+            #判断是否距离红球过远
+            if blob_red.area()<600:
+                # 获取色块的中心坐标
+                cx = blob_red.cx()
+                cy = blob_red.cy()
+                print(clock.fps())
+                print("cx:", cx)
+                print("cy：",cy)
+                # 根据色块的位置发送不同的数字给UART串口
+                if cx < img.width() // 3:  # 色块在左侧
+                    uart.write("%d" % 3)  # 发送数字3
+                    print("RD: 3")
+                    red_left = True
+                elif cx > 2 * img.width() // 3:  # 色块在右侧
+                    uart.write("%d" % 2)  # 发送数字2
+                    print("RD: 2")
+                    red_right = True
+                elif cx>img.width() //3 and cx<2 * img.width()//3:    # 色块在中间位置
+                    uart.write("%d" % 1)
+                    print("RD: 1")
+                    red_straight = True    # 发送数字1
 
-            if uart.any():  # 如果接收到任何消息
-                receive = uart.read().decode().strip()  # 将接收到的消息解码并去除首尾空格
-                print(receive)
+                if uart.any():  # 如果接收到任何消息
+                    receive = uart.read().decode().strip()  # 将接收到的消息解码并去除首尾空格
+                    print(receive)
+            else:
+                red_straight = True
+                for blob_green in img.find_blobs([thresholds[4]], pixels_threshold=400, area_threshold=400, merge=True):
+                    if blob_green.code()==1:
+                        green_cx = blob_green.cx()
+                        print(clock.fps())
+                        print("green_cx:", cx)
+
+                        if cx>img.width() //4 and cx<3 * img.width()//4:
+
+                            #距离球门过近
+                            if blob_red.area()>1000:
+                                uart.write("%d" % 5)
+                                print("RD: 5")
+                                green_retreat = True
+                            else:
+                                uart.write("%d" % 1)
+                                print("RD: 1")
+                                green_straight = True    # 发送数字1
+
 
         # 如果色块的纵横比大于0.5，认为它是非圆形的
         if blob.elongation() > 0.5:
@@ -85,6 +106,9 @@ while True:
     if not red_left and not red_right and (not red_straight):
         uart.write("%d" % 0)  # 发送数字0表示没有检测到红色色块
         print("RD: 0")
+    if not green_straight and not green_retreat:
+        uart.write("%d" % 4)  # 发送数字4, 表示需要转圈了
+        print("RD: 4")
     # 打印当前帧率
     #print(clock.fps())
     print("width:",img.width()//3)

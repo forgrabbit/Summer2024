@@ -1,7 +1,7 @@
 .\objects\systick.o: ..\User\systick.c
 .\objects\systick.o: ..\CMSIS\gd32f10x.h
 .\objects\systick.o: ..\CMSIS\core_cm3.h
-.\objects\systick.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\systick.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\systick.o: ..\CMSIS\core_cmInstr.h
 .\objects\systick.o: ..\CMSIS\core_cmFunc.h
 .\objects\systick.o: ..\CMSIS\system_gd32f10x.h
@@ -14,7 +14,7 @@
 .\objects\systick.o: ..\Library\Include\gd32f10x_dac.h
 .\objects\systick.o: ..\Library\Include\gd32f10x_dma.h
 .\objects\systick.o: ..\Library\Include\gd32f10x_enet.h
-.\objects\systick.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\systick.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\systick.o: ..\Library\Include\gd32f10x_exmc.h
 .\objects\systick.o: ..\Library\Include\gd32f10x_exti.h
 .\objects\systick.o: ..\Library\Include\gd32f10x_fmc.h

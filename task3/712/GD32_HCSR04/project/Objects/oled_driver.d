@@ -3,7 +3,7 @@
 .\objects\oled_driver.o: ..\User\APP\inc\led_driver.h
 .\objects\oled_driver.o: ..\CMSIS\gd32f10x.h
 .\objects\oled_driver.o: ..\CMSIS\core_cm3.h
-.\objects\oled_driver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\oled_driver.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\oled_driver.o: ..\CMSIS\core_cmInstr.h
 .\objects\oled_driver.o: ..\CMSIS\core_cmFunc.h
 .\objects\oled_driver.o: ..\CMSIS\system_gd32f10x.h
@@ -16,7 +16,7 @@
 .\objects\oled_driver.o: ..\Library\Include\gd32f10x_dac.h
 .\objects\oled_driver.o: ..\Library\Include\gd32f10x_dma.h
 .\objects\oled_driver.o: ..\Library\Include\gd32f10x_enet.h
-.\objects\oled_driver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\oled_driver.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\oled_driver.o: ..\Library\Include\gd32f10x_exmc.h
 .\objects\oled_driver.o: ..\Library\Include\gd32f10x_exti.h
 .\objects\oled_driver.o: ..\Library\Include\gd32f10x_fmc.h
