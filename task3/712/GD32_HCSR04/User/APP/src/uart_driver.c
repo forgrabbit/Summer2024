@@ -175,12 +175,14 @@ unsigned int receive_data;
 unsigned char receive_data_last_time_rotate = '1';
 unsigned char receive_data_last_time = '1';
 int accelerate = 1000; 
+int increased_rotate = 0;
+int goal_accel = 0;
 
 void Test_UASRT2(void)
 {
 	char txt[64];
 	
-	int duty = 2000;
+	int duty = 1500;
 
 	int balance = 600;
 	
@@ -199,7 +201,7 @@ void Test_UASRT2(void)
 		//串口中断服务中收什么发什么
 		sprintf(txt, "RD:%c %c %c",receive_data, receive_data_last_time_rotate, receive_data_last_time);
 		OLED_P8x16Str(0, 4, txt);
-		sprintf(txt, "a: %d ",accelerate);
+		sprintf(txt, "speed: %d ",accelerate+duty+goal_accel);
 		OLED_P8x16Str(0, 2, txt);
 		led_toggle();
 		
@@ -207,13 +209,19 @@ void Test_UASRT2(void)
 		if(receive_data == '4')//nearer
 		{
 			accelerate = 0;
+			goal_accel = goal_accel + 100;
+			if(goal_accel >= 1500)
+				goal_accel = 1500;
 			receive_data = receive_data_last_time;
 		}
 		if(receive_data == 'a')//far
 		{
-			accelerate = 1000;
+			accelerate = 2000;
 			receive_data = receive_data_last_time;
+			goal_accel = 0;
 		}
+		
+		
 		if(receive_data == '3')//turn left
 		{
 			MotorCtrl3W(0 , -duty , duty - balance);
@@ -228,7 +236,7 @@ void Test_UASRT2(void)
 		}
 		else if (receive_data == '1')//straight forward
 		{
-		   MotorCtrl3W(0,-duty - accelerate, duty + accelerate);
+		   MotorCtrl3W(0,-duty - accelerate-goal_accel, duty + accelerate + goal_accel);
 			 receive_data_last_time = receive_data;
 		}
 		else if (receive_data == '2')//turn right
@@ -281,37 +289,76 @@ void Test_UASRT2(void)
 		}*/
 		else if(receive_data == '6')// right
 		{
-			MotorCtrl3W(-1500 , -800 , 800 );
+			MotorCtrl3W(-1500 , -goal_accel-800 , 800+goal_accel );
 			receive_data_last_time = receive_data;
 			receive_data_last_time_rotate = '2';
 		}
 		else if(receive_data == '7')//left
 		{
-			MotorCtrl3W(1500 , -800 , 800 );
+			MotorCtrl3W(1500 , -goal_accel-800 , 800+goal_accel );
 			receive_data_last_time = receive_data;
 			receive_data_last_time_rotate = '3';
 		}
-		else if(receive_data == '8')//
+		else if(receive_data == '8')// left
 		{
-			MotorCtrl3W( 0, -2000 , 1200 );
+			MotorCtrl3W( -increased_rotate, -duty-500-goal_accel-increased_rotate , duty-300+goal_accel);
+			receive_data_last_time = receive_data;
+			receive_data_last_time_rotate = '3';
+		}
+		else if(receive_data == '9')// right 
+		{
+			MotorCtrl3W( increased_rotate , -duty+300-goal_accel, duty+500+goal_accel+increased_rotate);
 			receive_data_last_time = receive_data;
 			receive_data_last_time_rotate = '2';
-		}
-		else if(receive_data == '9')//
-		{
-			MotorCtrl3W( 0 , -1200, 2000 );
-			receive_data_last_time = receive_data;
-			receive_data_last_time_rotate = '3';
 		}
 		else if(receive_data == '5')
 		{
 			receive_data_last_time = receive_data;
-			MotorCtrl3W(0, -2000, 2000);
-			delay_1ms(150);
 			MotorCtrl3W(0, 2000, -2000);
 			delay_1ms(250);
-			MotorCtrl3W(1000, 1000, 1000);
-			delay_1ms(640);
+			MotorCtrl3W(0, -2000, 2000);
+			delay_1ms(200);
+			
+			
+			if(receive_data_last_time_rotate ==  '3')// turn right
+			{
+				MotorCtrl3W(-800 , -800, -800);
+				receive_data = '0';
+				receive_data_last_time = receive_data;
+			}
+			else if(receive_data_last_time_rotate ==  '2')// turn left 
+			{
+				MotorCtrl3W(800 , 800, 800);
+				receive_data = '0';
+				receive_data_last_time = receive_data;
+			}
+			else// turn left 
+			{
+				MotorCtrl3W(-800 , -800, -800);
+				receive_data = '0';
+				receive_data_last_time = receive_data;
+			}
+			delay_1ms(400);
+		}
+		else if(receive_data == 'd') // right
+		{
+			MotorCtrl3W(-1500 , -1000 , 2000 );
+			delay_1ms(500);
+		}
+		else if(receive_data == 'e') // left
+		{
+			MotorCtrl3W(1500 , -2000 , 1000 );
+			delay_1ms(500);
+		}
+		else if(receive_data == 'f') //  postion tag1
+		{
+			MotorCtrl3W(1500 , -1500 , 0 );
+			delay_1ms(500);
+		}
+		else if(receive_data == 'g') // position tag2
+		{
+			MotorCtrl3W(-1500 , 0 , 1500 );
+			delay_1ms(500);
 		}
 		else
 		{

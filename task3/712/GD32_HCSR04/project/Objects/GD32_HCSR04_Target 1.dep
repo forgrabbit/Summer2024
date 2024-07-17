@@ -1053,7 +1053,7 @@ I (..\Library\Include\gd32f10x_spi.h)(0x669668B8)
 I (..\Library\Include\gd32f10x_timer.h)(0x669668B8)
 I (..\Library\Include\gd32f10x_usart.h)(0x669668B8)
 I (..\Library\Include\gd32f10x_wwdgt.h)(0x669668B8)
-F (..\User\APP\src\uart_driver.c)(0x66967ED7)(--gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Library\Include -I ..\User -I ..\User\APP\inc-IE:\SummerDigital\keil\ARM\PACK\GigaDevice\GD32F10x_DFP\2.3.0\Device\Include-D__UVISION_VERSION="536" -DGD32F10X_MD -DUSE_STDPERIPH_DRIVER -DGD32F10X_MD -D__FPU_PRESENT-o .\objects\uart_driver.o --omf_browse .\objects\uart_driver.crf --depend .\objects\uart_driver.d)
+F (..\User\APP\src\uart_driver.c)(0x6697BB79)(--gnu -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CMSIS -I ..\Library\Include -I ..\User -I ..\User\APP\inc-IE:\SummerDigital\keil\ARM\PACK\GigaDevice\GD32F10x_DFP\2.3.0\Device\Include-D__UVISION_VERSION="536" -DGD32F10X_MD -DUSE_STDPERIPH_DRIVER -DGD32F10X_MD -D__FPU_PRESENT-o .\objects\uart_driver.o --omf_browse .\objects\uart_driver.crf --depend .\objects\uart_driver.d)
 I (E:\SummerDigital\keil\ARM\ARMCC\include\stdio.h)(0x60252374)
 I (E:\SummerDigital\keil\ARM\ARMCC\include\stdint.h)(0x6025237E)
 I (E:\SummerDigital\keil\ARM\ARMCC\include\string.h)(0x6025237E)
