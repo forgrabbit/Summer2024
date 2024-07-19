@@ -65,6 +65,8 @@ def find_max(blobs):
     return max_blob
 
 green_last_position = 2   #默认右转
+green_med = 0
+obstruction = False
 
 while True:
     clock.tick()  # 保持固定帧率，以控制循环速度
@@ -86,6 +88,8 @@ while True:
     #print(red_last_position)
     #print(green_last_position)
 
+
+
     # 在图像中查找红及绿色色块
     blobs_red = img.find_blobs([thresholds[3]])
     if blobs_red:
@@ -105,9 +109,9 @@ while True:
         if blob_green.area()>17000: #距离球门过近，
             uart.write("%d" % 5)
             print("5")
+            obstruction=False
             near_goal = True
             continue
-        print(blob_green.area())
 
 
         #记录上一次绿门出现时左中右位置
@@ -120,8 +124,72 @@ while True:
         elif green_cx >= 5* img.width() // 7:  # 色块在左侧
             green_last_position = 2
 
-    if blobs_red: #视野中同时找到红球和门
-        # 获取红绿色块的中心坐标
+        if green_cx<img.width()//2:
+            green_med = 0
+        else:
+            green_med = 1
+
+    flag_tag = False
+
+    for tag in img.find_apriltags(families=tag_families):
+        if tag.family() == image.TAG25H9:   # 如果是 TAG25H9 家族的 AprilTag
+            img.draw_rectangle(tag.rect(), color=(255, 0, 0))
+            img.draw_cross(tag.cx(), tag.cy(), color=(0, 255, 0))
+            #print(f"Detected TAG25H9 AprilTag with ID {tag.id()}, rotation {math.degrees(tag.rotation())} degrees")
+            if tag.id() ==0:
+                if tag.cx()>50 and tag.cx()<110 :
+                    #obstruction = True
+                    if green_med ==0:
+                        uart.write("%c"% 'd')  #球门在右边
+                        print("d")
+                    else:
+                        uart.write("%c"% 'e')  #球门在左边
+                        print("e")
+                flag_tag = True
+            elif tag.id() ==1:
+                if tag.cx()>50 and tag.cx()<110 :
+                    #obstruction = True
+                    uart.write("%c"% 'f')
+                    print("f")
+                flag_tag = True
+            elif tag.id() ==2:
+                if tag.cx()>50 and tag.cx()<110 :
+                    #obstruction = True
+                    uart.write("%c"% 'g')
+                    print("g")
+                flag_tag = True
+
+        else:
+            # 处理其他类型的 AprilTag 或未知标签家族
+            img.draw_rectangle(tag.rect(), color=(255, 0, 0))
+            img.draw_cross(tag.cx(), tag.cy(), color=(0, 255, 0))
+            print_args = (family_name(tag), tag.id(), (180 * tag.rotation()) / math.pi)
+            # print("Tag Family %s, Tag ID %d, rotation %f (degrees)" % print_args)
+
+    if flag_tag:
+        continue
+
+
+    '''
+    if obstruction == True:
+        if blobs_green:
+            if green_cx < img.width() // 3:  # 色块在左侧
+                uart.write("%d" % 2)  # 发送数字3
+                #print("RD: 2")
+
+            elif green_cx>=img.width() //3 and green_cx<2 * img.width()//3:  # 色块在中间
+                uart.write("%d" % 1)  # 发送数字1
+                #print("RD: 2")
+            elif green_cx>=2*img.width() //3 :  # 色块在右中侧
+                uart.write("%d" % 3)  # 发送数字2
+                #print("RD: 3")
+        else:    #视野中没有绿门
+
+            uart.write("%d" % 0)   #小车原地自转，方向由KEIL决定
+    '''
+    #else:
+    if blobs_red:
+        # 获取红色块的中心坐标
         red_cx = blob_red.cx()
         red_cy = blob_red.cy()
 
@@ -136,38 +204,37 @@ while True:
         print("red_area:",blob_red.area())
         #判断是否距离红球过远
         if blob_red.area()<1500:
-            uart.write("%c" % 'a')    #远离球门高速行驶
+            uart.write("%c" % 'a')    #远离红球高速行驶
             time.sleep(0.01)
             if red_cx < img.width() // 5:  # 色块在左侧
-                uart.write("%d" % 2)  # 发送数字3
+                uart.write("%c" % 'b')  # 发送数字3
                 #print("RD: 2")
             elif red_cx>=img.width() //5 and red_cx<2 * img.width()//5:  # 色块在左中侧
-                uart.write("%c" % 'b')  # 发送数字2
+                uart.write("%d" % 2)  # 发送数字2
                 #print("RD: b")
             elif 2*red_cx>=img.width() //5 and red_cx<3 * img.width()//5:  # 色块在中间
                 uart.write("%d" % 1)  # 发送数字1
                 #print("RD: 2")
             elif 3*red_cx>=img.width() //5 and red_cx<4 * img.width()//5:  # 色块在右中侧
-                uart.write("%d" % 3)  # 发送数字2
+                uart.write("%d" % 3)  # 发送数字3
                 #print("RD: 3")
-            elif 4*red_cx>=img.width() //5 and red_cx<5 * img.width()//5:    # 色块在右侧
+            elif 4*red_cx>=img.width() //5 and red_cx< img.width():    # 色块在右侧
                 uart.write("%c" % 'c')
                 #print("RD: c")
 
-        else:   #靠近球后开始准备自转
+        else:   # 靠近球后开始准备自转的逻辑
             uart.write("%d" % 4)
             time.sleep(0.01)
             print("4")
-            if red_cx>img.width() //3 and red_cx<2 * img.width()//3:
-
-                if     green_last_position == 1:#车与球和球门在一条直线，车直行
-                    uart.write("%d" % 1)    #发送数字1，直行
+            if red_cx > img.width() // 3 and red_cx < 2 * img.width() // 3:
+                if green_last_position == 1:
+                    uart.write("%d" % 1)
                     print("RD: 1")
-                elif   green_last_position == 2:  #小车应该向右转，对齐球门与球
+                elif green_last_position == 2:
                     uart.write("%d" % 6)
                     print("RD: 6")
-                elif   green_last_position == 3:
-                    uart.write("%d" % 7)   #小车应该向左转，对齐球门与球
+                elif green_last_position == 3:
+                    uart.write("%d" % 7)
                     print("RD: 7")
 
 

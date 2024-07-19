@@ -2,7 +2,7 @@
 .\objects\gd32f10x_rtc.o: ..\Library\Include\gd32f10x_rtc.h
 .\objects\gd32f10x_rtc.o: ..\CMSIS\gd32f10x.h
 .\objects\gd32f10x_rtc.o: ..\CMSIS\core_cm3.h
-.\objects\gd32f10x_rtc.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\gd32f10x_rtc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\gd32f10x_rtc.o: ..\CMSIS\core_cmInstr.h
 .\objects\gd32f10x_rtc.o: ..\CMSIS\core_cmFunc.h
 .\objects\gd32f10x_rtc.o: ..\CMSIS\system_gd32f10x.h
@@ -15,7 +15,7 @@
 .\objects\gd32f10x_rtc.o: ..\Library\Include\gd32f10x_dac.h
 .\objects\gd32f10x_rtc.o: ..\Library\Include\gd32f10x_dma.h
 .\objects\gd32f10x_rtc.o: ..\Library\Include\gd32f10x_enet.h
-.\objects\gd32f10x_rtc.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\gd32f10x_rtc.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\gd32f10x_rtc.o: ..\Library\Include\gd32f10x_exmc.h
 .\objects\gd32f10x_rtc.o: ..\Library\Include\gd32f10x_exti.h
 .\objects\gd32f10x_rtc.o: ..\Library\Include\gd32f10x_fmc.h

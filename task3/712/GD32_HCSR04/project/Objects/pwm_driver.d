@@ -1,6 +1,6 @@
 .\objects\pwm_driver.o: ..\User\APP\src\pwm_driver.c
 .\objects\pwm_driver.o: ..\User\APP\inc\pwm_driver.h
-.\objects\pwm_driver.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\pwm_driver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\pwm_driver.o: ..\CMSIS\gd32f10x.h
 .\objects\pwm_driver.o: ..\CMSIS\core_cm3.h
 .\objects\pwm_driver.o: ..\CMSIS\core_cmInstr.h
@@ -15,7 +15,7 @@
 .\objects\pwm_driver.o: ..\Library\Include\gd32f10x_dac.h
 .\objects\pwm_driver.o: ..\Library\Include\gd32f10x_dma.h
 .\objects\pwm_driver.o: ..\Library\Include\gd32f10x_enet.h
-.\objects\pwm_driver.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\pwm_driver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\pwm_driver.o: ..\Library\Include\gd32f10x_exmc.h
 .\objects\pwm_driver.o: ..\Library\Include\gd32f10x_exti.h
 .\objects\pwm_driver.o: ..\Library\Include\gd32f10x_fmc.h

@@ -209,9 +209,9 @@ void Test_UASRT2(void)
 		if(receive_data == '4')//nearer
 		{
 			accelerate = 0;
-			goal_accel = goal_accel + 100;
-			if(goal_accel >= 1500)
-				goal_accel = 1500;
+			goal_accel = goal_accel + 200;
+			if(goal_accel >= 2500)
+				goal_accel = 2500;
 			receive_data = receive_data_last_time;
 		}
 		if(receive_data == 'a')//far
@@ -224,30 +224,30 @@ void Test_UASRT2(void)
 		
 		if(receive_data == '3')//turn left
 		{
-			MotorCtrl3W(0 , -duty , duty - balance);
+			MotorCtrl3W(-500 , -duty  , duty - balance +350);
 			receive_data_last_time = receive_data;
 			receive_data_last_time_rotate = receive_data;		
 		}
 		else if(receive_data == 'c')//turn left
 		{
-			MotorCtrl3W(0 , -duty , duty - increased_balance);
+			MotorCtrl3W(-750 , -duty , duty - increased_balance + 350 );
 			receive_data_last_time = receive_data;
 			receive_data_last_time_rotate = '3';			
 		}
 		else if (receive_data == '1')//straight forward
 		{
-		   MotorCtrl3W(0,-duty - accelerate-goal_accel, duty + accelerate + goal_accel);
+		   MotorCtrl3W(0,-duty - goal_accel - accelerate, duty + goal_accel+350+ accelerate);
 			 receive_data_last_time = receive_data;
 		}
 		else if (receive_data == '2')//turn right
 		{
-		  MotorCtrl3W(0 , -duty + balance, duty);
+		  MotorCtrl3W(500 , - duty + balance  , duty +450);
 			receive_data_last_time = receive_data;
 			receive_data_last_time_rotate = receive_data;
 		}
 		else if (receive_data == 'b')//turn right
 		{
-		  MotorCtrl3W(0 , -duty + increased_balance, duty);
+		  MotorCtrl3W(750 , - duty + increased_balance , duty+450);
 			receive_data_last_time = receive_data;
 			receive_data_last_time_rotate = '2';
 		}
@@ -289,25 +289,25 @@ void Test_UASRT2(void)
 		}*/
 		else if(receive_data == '6')// right
 		{
-			MotorCtrl3W(-1500 , -goal_accel-800 , 800+goal_accel );
+			MotorCtrl3W(-2000 , -goal_accel-1000 , 1000+goal_accel +450);
 			receive_data_last_time = receive_data;
 			receive_data_last_time_rotate = '2';
 		}
 		else if(receive_data == '7')//left
 		{
-			MotorCtrl3W(1500 , -goal_accel-800 , 800+goal_accel );
+			MotorCtrl3W(2000 , -goal_accel-1000 , 1000+goal_accel +450);
 			receive_data_last_time = receive_data;
 			receive_data_last_time_rotate = '3';
 		}
 		else if(receive_data == '8')// left
 		{
-			MotorCtrl3W( -increased_rotate, -duty-500-goal_accel-increased_rotate , duty-300+goal_accel);
+			MotorCtrl3W( -increased_rotate, -duty-500-goal_accel-increased_rotate , duty-300+goal_accel+450);
 			receive_data_last_time = receive_data;
 			receive_data_last_time_rotate = '3';
 		}
 		else if(receive_data == '9')// right 
 		{
-			MotorCtrl3W( increased_rotate , -duty+300-goal_accel, duty+500+goal_accel+increased_rotate);
+			MotorCtrl3W( increased_rotate , -duty+300-goal_accel, duty+500+goal_accel+increased_rotate+450);
 			receive_data_last_time = receive_data;
 			receive_data_last_time_rotate = '2';
 		}

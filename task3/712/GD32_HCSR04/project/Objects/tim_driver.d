@@ -3,7 +3,7 @@
 .\objects\tim_driver.o: ..\User\main.h
 .\objects\tim_driver.o: ..\CMSIS\gd32f10x.h
 .\objects\tim_driver.o: ..\CMSIS\core_cm3.h
-.\objects\tim_driver.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\tim_driver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\tim_driver.o: ..\CMSIS\core_cmInstr.h
 .\objects\tim_driver.o: ..\CMSIS\core_cmFunc.h
 .\objects\tim_driver.o: ..\CMSIS\system_gd32f10x.h
@@ -16,7 +16,7 @@
 .\objects\tim_driver.o: ..\Library\Include\gd32f10x_dac.h
 .\objects\tim_driver.o: ..\Library\Include\gd32f10x_dma.h
 .\objects\tim_driver.o: ..\Library\Include\gd32f10x_enet.h
-.\objects\tim_driver.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\tim_driver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\tim_driver.o: ..\Library\Include\gd32f10x_exmc.h
 .\objects\tim_driver.o: ..\Library\Include\gd32f10x_exti.h
 .\objects\tim_driver.o: ..\Library\Include\gd32f10x_fmc.h

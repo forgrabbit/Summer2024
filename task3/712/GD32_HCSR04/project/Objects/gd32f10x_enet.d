@@ -2,7 +2,7 @@
 .\objects\gd32f10x_enet.o: ..\Library\Include\gd32f10x_enet.h
 .\objects\gd32f10x_enet.o: ..\CMSIS\gd32f10x.h
 .\objects\gd32f10x_enet.o: ..\CMSIS\core_cm3.h
-.\objects\gd32f10x_enet.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\gd32f10x_enet.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\gd32f10x_enet.o: ..\CMSIS\core_cmInstr.h
 .\objects\gd32f10x_enet.o: ..\CMSIS\core_cmFunc.h
 .\objects\gd32f10x_enet.o: ..\CMSIS\system_gd32f10x.h
@@ -31,4 +31,4 @@
 .\objects\gd32f10x_enet.o: ..\Library\Include\gd32f10x_timer.h
 .\objects\gd32f10x_enet.o: ..\Library\Include\gd32f10x_usart.h
 .\objects\gd32f10x_enet.o: ..\Library\Include\gd32f10x_wwdgt.h
-.\objects\gd32f10x_enet.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\gd32f10x_enet.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

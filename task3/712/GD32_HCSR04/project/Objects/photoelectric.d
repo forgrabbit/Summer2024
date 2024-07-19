@@ -1,6 +1,6 @@
 .\objects\photoelectric.o: ..\User\APP\src\Photoelectric.c
 .\objects\photoelectric.o: ..\User\APP\inc\Photoelectric.h
-.\objects\photoelectric.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\photoelectric.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\photoelectric.o: ..\CMSIS\gd32f10x.h
 .\objects\photoelectric.o: ..\CMSIS\core_cm3.h
 .\objects\photoelectric.o: ..\CMSIS\core_cmInstr.h
@@ -15,7 +15,7 @@
 .\objects\photoelectric.o: ..\Library\Include\gd32f10x_dac.h
 .\objects\photoelectric.o: ..\Library\Include\gd32f10x_dma.h
 .\objects\photoelectric.o: ..\Library\Include\gd32f10x_enet.h
-.\objects\photoelectric.o: E:\SummerDigital\keil\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\photoelectric.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\photoelectric.o: ..\Library\Include\gd32f10x_exmc.h
 .\objects\photoelectric.o: ..\Library\Include\gd32f10x_exti.h
 .\objects\photoelectric.o: ..\Library\Include\gd32f10x_fmc.h
